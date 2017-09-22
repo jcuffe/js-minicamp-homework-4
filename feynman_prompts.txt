@@ -1,0 +1,90 @@
+Callback Functions
+
+In many languages, functions can be treated just like variables when used in your
+instructions. By referring to the function's name, you can assign the function's
+value to other variable names, and you can even use the function as an argument
+when calling another function. When you use a function like this, it is called a
+"Callback Function." Functions that perform very general and important tasks are
+often written to take a callback function. They will execute this callback function
+during their own execution, and can used any information returned by the callback
+function. An example is a function that can compare any two objects to each other.
+Comparison is very general, so you will decide what kind of comparison you would
+like to use, and write a function that performs that comparison. You can then call
+the general "compare" function, using your two objects, and the comparison function
+you created. For any function that does work, designing it to use callbacks can
+save time if there are many ways the work can be done.
+
+Closure
+
+Whenever a variable is created in your program, it is stored on the computer running
+it in its memory. How long these variables are kept and access to the variables 
+are both controlled by the rules of the language you are using. Common to many 
+languages is the concept of Scope, which is shorthand for "which variables are 
+visible to the instructions currently executing?" In some languages, a function
+can only access its own arguments and variables created inside the function. This
+is the strictest form of scope. In Javascript and some other languages, a function
+can access variables that are accessible to the function it was created in. This is
+the first useful aspect of Closure. Ordinarily, when a function has finished its
+execution, the computer will destroy all variables the function had created, in
+order to free up the space in memory they were using. One exception to this is if
+you were to create a function which referenced a variable in your current scope,
+and assigned that function to a variable that will survive this scope's destruction.
+This is the second aspect of Closure, and the most important. By creating a closure,
+you can insure that the "enclosed" variables will remain accessible as long as the
+function remains assigned to a variable, and the function will be able to access
+and even change the enclose variable whenever it is called.
+
+arguments
+
+Javascript functions are capable of accepting more arguments than those listed when
+the function was written. Even a function that expects no arguments can be called
+with any number of arguments, which will usually be ignored. When you are unsure
+about the amount or type of your arguments, or if you want to treat them as a group
+instead of by name, you can use the `arguments` keyword. `arguments` is a helpful
+Object that can be accessed inside any function. It contains all of the arguments
+passed to the function when it was called, in numbered order. 
+
+Recursion
+
+Recursion is a very useful tool for breaking difficult tasks into a series of smaller
+tasks, in order to make writing the solution more simple. A recursive function will
+call itself after it is finished executing the code related to its arguments. Before
+executing this code, which is the work we are doing, a recursive function will check
+to see if the work has been completed. In this way, we stop the recursive function
+from calling itself forever. If the work has been completed, the function returns
+it to the parent function. Recursive functions are written so that they will all
+pass this return value to their parents as well. A recursive function you may do
+in real life is with alphabetizing. When I had to do this, I would look at the first
+letter and create groups of items with the same starting letter. Then, I would take
+each group and continue alphabetizing. With enough books to sort, I might have done
+this one letter at a time! When a group was fully in order, I could add it to the
+shelf, and once all groups were complete, I was done. This could be written with
+recursion by writing a function that will divide one large group of information
+into smaller groups that are sorted compared to each other, and then calling itself
+with each of these smaller groups as the argument. When each returns, the data will
+be sorted. Sorting is one of many concepts which are powerfully simplified by using
+recursion.
+
+prototype
+
+Many objects created while programming are similar to existing objects or have need
+of properties and methods that other objects possess. Most languages have features
+that allow programmers to share properties and methods between objects, which is
+called "inheritance." This concept imagines objects as parents and children to each
+other, and allows us to make relationships between our objects. The child objects
+in this system are allowed to access properties and methods owned by the parents.
+In Javascript, the `prototype` keyword is provided to allow access to the object's
+parent. Every object has a parent in its prototype, up to Object, which is the highest
+parent and has a prototype of `null`. This is how arrays and strings get their special
+methods, and we can use object prototypes in our own code to create the same convenience.
+
+Constructors
+
+We often want the ability to create our objects with many different values, and
+Constructors are an easy way to achieve this. They are a special kind of function
+that is called with a keyword, `new`. Inside the function, we can set the value of
+any properties we want on this new object by using another keyword, `this`. This
+allows us to easily create a new copy of our object with any values we like for its
+properties. Another feature allowed by constructors is used by accessing its prototype.
+By setting properties on the Constructor's prototype, we grant these properties to
+all objects created using the constructor. 
